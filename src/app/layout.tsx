@@ -23,11 +23,10 @@ export const metadata: Metadata = {
     default: "sadwell",
     template: "%s | sadwell",
   },
-  description:
-    "Sadwell — brand essenziale. Pezzi pensati per durare, con un'estetica minimalista e contemporanea.",
+  description: "Indossa ciò che senti. Sadwell.",
   openGraph: {
     title: "sadwell",
-    description: "Indossare il silenzio.",
+    description: "Indossa ciò che senti.",
     type: "website",
   },
 };

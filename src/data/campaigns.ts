@@ -5,8 +5,10 @@ export type CampaignSlide = {
 
 export type Campaign = {
   id: string;
+  label?: string;
   title: string;
   subtitle: string;
+  closingLine?: string;
   cta: string;
   ctaHref: string;
   /** Immagine desktop */
@@ -23,10 +25,10 @@ export const activeCampaignId = "launch";
 export const campaigns: Record<string, Campaign> = {
   launch: {
     id: "launch",
-    title: "Indossare il silenzio",
-    subtitle:
-      "Sadwell nasce dall'incontro tra minimalismo e materia. Pezzi essenziali, pensati per durare.",
-    cta: "Scopri il negozio",
+    label: "Sadwell",
+    title: "Indossa ciò\nche senti.",
+    subtitle: "I giorni lenti, vuoti, difficili.\nQuelli che non vanno corretti.",
+    cta: "Merch",
     ctaHref: "/negozio",
     carousel: [
       {

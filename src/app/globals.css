@@ -159,34 +159,12 @@ body {
 
 .hero-carousel-slide {
   opacity: 0;
-  transform: scale(1.05);
-  transition:
-    opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 2.2s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
+  transition: opacity 0.9s ease;
 }
 
 .hero-carousel-slide--active {
   opacity: 1;
-  transform: scale(1);
-  z-index: 2;
-}
-
-.hero-carousel-slide--exit {
   z-index: 1;
-}
-
-.hero-carousel-slide--active .hero-carousel-slide__img {
-  animation: hero-carousel-ken-burns 6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-}
-
-@keyframes hero-carousel-ken-burns {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.07);
-  }
 }
 
 

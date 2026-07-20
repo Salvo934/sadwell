@@ -57,38 +57,67 @@ export function Hero() {
             className="pointer-events-none absolute inset-x-0 bottom-0 top-[30%] rounded-t-4xl bg-linear-to-t from-black/70 via-black/35 to-transparent md:hidden"
           />
         )}
-        <div className="relative">
-        <div className="grid items-end gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div className="relative max-w-xl">
+        <div className="flex flex-col gap-10 md:max-w-2xl">
           <div>
             <p
               className={`type-label animate-fade-up mb-6 stagger-1 ${
                 isDark ? "text-white/70" : "text-muted"
               }`}
             >
-              Collezione 01 — 2026
+              {campaign.label ?? "Collezione 01 — 2026"}
             </p>
             <h1
               className={`type-headline animate-fade-up text-[clamp(2.75rem,7vw,5.5rem)] stagger-2 ${
                 isDark ? "text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)]" : "text-foreground"
               }`}
             >
-              {campaign.title.split(" ").map((word, i) => (
+              {campaign.title.split("\n").map((line, i) => (
                 <span key={i} className="block">
-                  {word}
+                  {line}
                 </span>
               ))}
             </h1>
           </div>
 
-          <div className="lg:pb-2">
+          <div>
+            <div
+              className={`animate-fade-up mb-5 h-px w-10 stagger-3 ${
+                isDark ? "bg-white/35" : "bg-foreground/20"
+              }`}
+            />
             <p
-              className={`type-body animate-fade-up max-w-sm text-base md:text-[17px] stagger-3 ${
-                isDark ? "text-white/80" : "text-muted"
+              className={`type-body animate-fade-up max-w-md text-[15px] leading-[1.85] tracking-[0.01em] md:text-base stagger-3 ${
+                isDark ? "text-white/75" : "text-muted"
               }`}
             >
-              {campaign.subtitle}
+              {campaign.subtitle.split("\n").map((line, i) => (
+                <span
+                  key={i}
+                  className={`block ${
+                    i === 0
+                      ? isDark
+                        ? "text-white/85"
+                        : "text-foreground/90"
+                      : isDark
+                        ? "mt-1 text-white/55"
+                        : "mt-1 text-muted"
+                  }`}
+                >
+                  {line}
+                </span>
+              ))}
             </p>
-            <div className="animate-fade-up mt-10 flex flex-wrap items-center gap-4 stagger-4">
+            {campaign.closingLine && (
+              <p
+                className={`type-body animate-fade-up mt-6 max-w-sm text-sm leading-relaxed md:text-[15px] stagger-4 ${
+                  isDark ? "text-white/65" : "text-muted"
+                }`}
+              >
+                {campaign.closingLine}
+              </p>
+            )}
+            <div className={`animate-fade-up flex flex-wrap items-center gap-4 ${campaign.closingLine ? "mt-10 stagger-5" : "mt-10 stagger-4"}`}>
               <Button
                 href={campaign.ctaHref}
                 variant={isDark ? "primary" : "primary"}
@@ -101,15 +130,12 @@ export function Hero() {
                 {campaign.cta}
                 <span aria-hidden>→</span>
               </Button>
-              <Button href="/negozio" variant={isDark ? "outline-light" : "ghost"}>
-                Catalogo
-              </Button>
             </div>
           </div>
         </div>
 
         <div
-          className={`animate-fade-in relative mt-16 flex items-center gap-4 stagger-5 ${
+          className={`animate-fade-in relative mt-16 flex items-center gap-4 stagger-6 ${
             isDark ? "text-white/55" : "text-muted"
           }`}
         >

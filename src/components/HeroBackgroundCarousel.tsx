@@ -30,14 +30,14 @@ export function HeroBackgroundCarousel({
           <div
             key={slide.src}
             className={`hero-carousel-slide absolute inset-0 ${
-              isActive ? "hero-carousel-slide--active" : "hero-carousel-slide--exit"
+              isActive ? "hero-carousel-slide--active" : ""
             }`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={slide.src}
               alt=""
-              className="hero-carousel-slide__img h-full w-full object-cover"
+              className="h-full w-full object-cover"
               style={{
                 objectPosition: slide.position ?? "center center",
               }}
