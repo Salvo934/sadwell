@@ -17,7 +17,7 @@ const contactLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-charcoal text-white grain">
+    <footer className="relative overflow-hidden bg-charcoal pb-24 text-white grain md:pb-0">
       <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 md:px-10 md:pb-12 md:pt-24">
         {/* Top */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
@@ -89,20 +89,16 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 flex flex-col items-center gap-5 border-t border-white/10 pt-8 text-center md:mt-16 md:flex-row md:items-end md:justify-between md:text-left">
+        <div className="mt-14 border-t border-white/10 pt-8 text-center md:mt-16 md:text-left">
           <p className="font-sans text-xs text-white/35">
             © {new Date().getFullYear()} sadwell. Tutti i diritti riservati.
-          </p>
-          <p className="type-headline text-lg text-white/80 md:text-xl">
-            Indossare il silenzio
           </p>
         </div>
       </div>
 
-      {/* Watermark */}
       <p
         aria-hidden
-        className="type-headline pointer-events-none absolute bottom-[-0.12em] left-1/2 w-full -translate-x-1/2 select-none text-center text-[clamp(4rem,18vw,11rem)] leading-none text-white/3"
+        className="footer-watermark type-headline pointer-events-none absolute bottom-[-0.12em] left-1/2 w-full -translate-x-1/2 select-none text-center text-[clamp(4rem,18vw,11rem)] leading-none text-white"
       >
         sadwell
       </p>

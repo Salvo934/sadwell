@@ -7,7 +7,7 @@ import { LogoMark } from "@/components/LogoMark";
 type MobileMenuProps = {
   open: boolean;
   onClose: () => void;
-  isHome: boolean;
+  isDark: boolean;
   pathname: string;
 };
 
@@ -19,7 +19,7 @@ const navLinks = [
 export function MobileMenu({
   open,
   onClose,
-  isHome,
+  isDark,
   pathname,
 }: MobileMenuProps) {
   useEffect(() => {
@@ -37,7 +37,7 @@ export function MobileMenu({
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  const dark = isHome;
+  const dark = isDark;
 
   return (
     <div

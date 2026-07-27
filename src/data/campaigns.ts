@@ -25,11 +25,10 @@ export const activeCampaignId = "launch";
 export const campaigns: Record<string, Campaign> = {
   launch: {
     id: "launch",
-    label: "Sadwell",
     title: "Indossa ciò\nche senti.",
     subtitle: "I giorni lenti, vuoti, difficili.\nQuelli che non vanno corretti.",
     cta: "Merch",
-    ctaHref: "/negozio",
+    ctaHref: "/#merch",
     carousel: [
       {
         src: "/campaigns/launch-mobile.png",

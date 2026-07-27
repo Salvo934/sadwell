@@ -41,15 +41,6 @@ export function Hero() {
         <div className="absolute -left-16 bottom-1/3 hidden h-70 w-70 animate-float rounded-full bg-white/2 blur-3xl [animation-delay:2s] md:block" />
       </div>
 
-      <p
-        aria-hidden
-        className={`type-headline pointer-events-none absolute right-[-0.05em] top-1/2 z-1 hidden -translate-y-1/2 select-none text-[clamp(6rem,18vw,16rem)] leading-none opacity-[0.04] lg:block ${
-          isDark ? "text-white" : "text-foreground"
-        }`}
-      >
-        sadwell
-      </p>
-
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 pt-32 md:px-10 md:pb-20 md:pt-36">
         {hasCarousel && (
           <div

@@ -13,6 +13,10 @@ export type Product = {
   name: string;
   description: string;
   price: number;
+  /** Nome colore visibile al cliente */
+  colorName: string;
+  /** Swatch colore prodotto */
+  colorSwatch: string;
   /** Placeholder colore — usato quando non c'è immagine */
   color: string;
   /** Immagine singola (legacy) */
@@ -23,12 +27,17 @@ export type Product = {
   tone?: "light" | "dark";
 };
 
+export const SIZES = ["S", "M", "L", "XL"] as const;
+export type Size = (typeof SIZES)[number];
+
 export const products: Product[] = [
   {
     id: "tee-01",
     name: "Essential Tee",
     description: "Cotone pesante 240gsm, taglio oversize. Nero, logo tono su tono.",
     price: 45,
+    colorName: "Nero",
+    colorSwatch: "#0a0a0a",
     color: "#e8e4df",
     images: [
       {
@@ -53,6 +62,8 @@ export const products: Product[] = [
     name: "Essential Tee Bianco",
     description: "Cotone pesante 240gsm, taglio oversize. Bianco gesso, logo nero.",
     price: 45,
+    colorName: "Bianco",
+    colorSwatch: "#f2f0ec",
     color: "#f4f2ee",
     images: [
       {
@@ -72,6 +83,10 @@ export const products: Product[] = [
     tone: "light",
   },
 ];
+
+export function getProductById(id: string): Product | undefined {
+  return products.find((product) => product.id === id);
+}
 
 export function getProductImages(product: Product): ProductImage[] {
   if (product.images?.length) return product.images;

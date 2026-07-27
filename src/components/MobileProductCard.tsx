@@ -1,3 +1,5 @@
+import { AddToCartButton } from "@/components/AddToCartButton";
+import { ProductColorBadge } from "@/components/ProductColorBadge";
 import { formatPrice, getProductImages, type Product } from "@/data/products";
 import {
   ProductGallery,
@@ -21,7 +23,8 @@ export function MobileProductCard({
 
   return (
     <article
-      className="mobile-shop-item mx-auto w-full max-w-75"
+      id={product.id}
+      className="mobile-shop-item mx-auto w-full max-w-75 scroll-mt-32"
       style={{ animationDelay: `${index * 140 + 80}ms` }}
     >
       <div className="product-card-premium group relative">
@@ -59,26 +62,21 @@ export function MobileProductCard({
             <h2 className="type-headline mt-1.5 text-[1.65rem] leading-[0.92] text-white">
               {product.name}
             </h2>
+            <ProductColorBadge
+              name={product.colorName}
+              swatch={product.colorSwatch}
+              variant="dark"
+              size="sm"
+            />
             <p className="type-body mt-2 text-xs leading-relaxed text-white/55">
               {product.description}
             </p>
 
-            <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
-              <p className="type-headline text-xl text-white">
+            <div className="mt-4 border-t border-white/10 pt-4">
+              <p className="type-headline mb-3 text-xl text-white">
                 {formatPrice(product.price)}
               </p>
-              <button
-                type="button"
-                className="flex shrink-0 items-center gap-2 rounded-full bg-white px-4 py-2.5 font-sans text-xs font-medium text-foreground transition-transform duration-300 active:scale-[0.97]"
-              >
-                Acquista
-                <span
-                  aria-hidden
-                  className="flex h-5 w-5 items-center justify-center rounded-full bg-foreground text-[10px] text-white"
-                >
-                  →
-                </span>
-              </button>
+              <AddToCartButton product={product} variant="dark" compact />
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { AddToCartButton } from "@/components/AddToCartButton";
+import { ProductColorBadge } from "@/components/ProductColorBadge";
 import { formatPrice, getProductImages, type Product } from "@/data/products";
 import {
   ProductGallery,
@@ -60,7 +62,13 @@ export function ProductCard({ product, index, featured = false }: ProductCardPro
           >
             {product.name}
           </h3>
-          <p className="type-body mt-3 max-w-sm text-sm text-white/60">
+          <ProductColorBadge
+            name={product.colorName}
+            swatch={product.colorSwatch}
+            variant="dark"
+            size="sm"
+          />
+          <p className="type-body mt-2 max-w-sm text-sm text-white/60">
             {product.description}
           </p>
         </div>
@@ -69,19 +77,20 @@ export function ProductCard({ product, index, featured = false }: ProductCardPro
         </p>
       </div>
 
-      <div className="mt-5 flex items-center justify-between gap-4 border-t border-white/10 pt-5">
-        <span className="type-label text-white/40">
+      <div className="mt-5 border-t border-white/10 pt-5">
+        <span className="type-label mb-4 block text-white/40">
           {product.tone === "dark" ? "480gsm · Brushed" : "240gsm · Oversize"}
         </span>
-        <span className="rounded-full bg-white px-6 py-2.5 font-sans text-sm font-medium text-foreground shadow-lg transition-transform duration-300 group-hover:scale-[1.02]">
-          Acquista →
-        </span>
+        <AddToCartButton product={product} variant="dark" />
       </div>
     </div>
   ) : null;
 
   return (
-    <article className={`group product-card-premium flex flex-col ${featured ? "lg:col-span-2" : ""}`}>
+    <article
+      id={product.id}
+      className={`group product-card-premium flex flex-col scroll-mt-32 ${featured ? "lg:col-span-2" : ""}`}
+    >
       <div
         className={`product-card-shadow relative overflow-hidden rounded-4xl bg-charcoal ring-1 ring-black/6 transition-all duration-700 ease-out group-hover:-translate-y-1.5 group-hover:shadow-[0_28px_80px_rgba(12,12,12,0.14)] ${
           hasGallery
@@ -134,13 +143,11 @@ export function ProductCard({ product, index, featured = false }: ProductCardPro
                 </p>
               </div>
 
-              <div className="mt-5 flex items-center justify-between gap-4 border-t border-white/10 pt-5 opacity-0 transition-all duration-500 group-hover:opacity-100">
-                <span className="type-label text-white/40">
+              <div className="mt-5 border-t border-white/10 pt-5 opacity-0 transition-all duration-500 group-hover:opacity-100">
+                <span className="type-label mb-4 block text-white/40">
                   {product.tone === "dark" ? "480gsm · Brushed" : "240gsm · Oversize"}
                 </span>
-                <span className="rounded-full bg-white px-6 py-2.5 font-sans text-sm font-medium text-foreground shadow-lg">
-                  Acquista →
-                </span>
+                <AddToCartButton product={product} variant="dark" />
               </div>
             </div>
           </>

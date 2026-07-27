@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import { DM_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { CartDrawer } from "@/components/CartDrawer";
+import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -42,9 +44,12 @@ export default function RootLayout({
       className={`${dmSans.variable} ${cooperBlack.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );
