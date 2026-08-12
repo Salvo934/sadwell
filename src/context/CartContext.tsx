@@ -16,6 +16,7 @@ import {
   getCartTotals,
   type CartItem,
 } from "@/lib/cart";
+import { pushAddToCartEvent, pushRemoveFromCartEvent } from "@/lib/gtm";
 
 const STORAGE_KEY = "sadwell-cart";
 
@@ -78,6 +79,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
           (item) => cartItemKey(item.productId, item.size) === key,
         );
 
+        const product = getProductById(productId);
+        if (product) {
+          pushAddToCartEvent(product, size, amount);
+        }
+
         if (existing) {
           return current.map((item) =>
             cartItemKey(item.productId, item.size) === key
@@ -98,9 +104,20 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const removeItem = useCallback((productId: string, size: Size) => {
     const key = cartItemKey(productId, size);
-    setItems((current) =>
-      current.filter((item) => cartItemKey(item.productId, item.size) !== key),
-    );
+    setItems((current) => {
+      const item = current.find(
+        (entry) => cartItemKey(entry.productId, entry.size) === key,
+      );
+      const product = getProductById(productId);
+
+      if (item && product) {
+        pushRemoveFromCartEvent(product, size, item.quantity);
+      }
+
+      return current.filter(
+        (entry) => cartItemKey(entry.productId, entry.size) !== key,
+      );
+    });
   }, []);
 
   const updateItemSize = useCallback(
